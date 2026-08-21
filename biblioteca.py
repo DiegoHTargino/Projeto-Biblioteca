@@ -42,6 +42,14 @@ match opcao:
             
         print("Livro cadastrado com sucesso!\n===============================")
 
+    case 2:
+            with open("livros.json","r",encoding="utf-8") as arquivo:   
+                livros = json.load(arquivo)
+
+            print("===============================\nOs livros cadastrados são:")
+            for livro in livros:
+                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
+
     case 6:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
         opcaoremocao = int(input("Como deseja procurar seu livro para remove-lo? "))    # usuário

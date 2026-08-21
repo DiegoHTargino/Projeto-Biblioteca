@@ -14,5 +14,21 @@
         "Numero de páginas": 336,
         "Ano de publicação": 1937,
         "ISBN": "9788595084742"
+    },
+    {
+        "Titulo": "Percy Jackson e o Ladrão de Raios",
+        "Autor": "Rick Riordan",
+        "Gênero": "Fantasia",
+        "Numero de páginas": 400,
+        "Ano de publicação": 2005,
+        "ISBN": "9788533613379"
+    },
+    {
+        "Titulo": "A Revolução dos Bichos",
+        "Autor": "George Orwell",
+        "Gênero": "Sátira",
+        "Numero de páginas": 152,
+        "Ano de publicação": 1945,
+        "ISBN": "9788535909555"
     }
 ]
