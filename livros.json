@@ -1,34 +1,10 @@
 [
     {
-        "Titulo": "Dom Casmurro",
-        "Autor": "Machado de Assis",
-        "Gênero": "Romance",
-        "Numero de páginas": 256,
-        "Ano de publicação": 1899,
-        "ISBN": "9788535910663"
-    },
-    {
-        "Titulo": "O Hobbit",
-        "Autor": "J.R.R. Tolkien",
-        "Gênero": "Fantasia",
-        "Numero de páginas": 336,
-        "Ano de publicação": 1937,
-        "ISBN": "9788595084742"
-    },
-    {
         "Titulo": "Percy Jackson e o Ladrão de Raios",
         "Autor": "Rick Riordan",
         "Gênero": "Fantasia",
         "Numero de páginas": 400,
         "Ano de publicação": 2005,
         "ISBN": "9788533613379"
-    },
-    {
-        "Titulo": "A Revolução dos Bichos",
-        "Autor": "George Orwell",
-        "Gênero": "Sátira",
-        "Numero de páginas": 152,
-        "Ano de publicação": 1945,
-        "ISBN": "9788535909555"
     }
 ]
