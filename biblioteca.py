@@ -81,16 +81,8 @@ match opcao:
                         print("Este ISBN não está na biblioteca.")
                         break
                     
-                
 
                 with open("livros.json", "w", encoding="utf-8") as arquivo:
                     json.dump(livros, arquivo, indent=4, ensure_ascii=False)
 
-                
 
-                
-                   
-
-
-
-                    
