@@ -42,6 +42,14 @@ match opcao:
             
         print("Livro cadastrado com sucesso!\n===============================")
 
+    case 2:
+            with open("livros.json","r",encoding="utf-8") as arquivo:   
+                livros = json.load(arquivo)
+
+            print("===============================\nOs livros cadastrados são:")
+            for livro in livros:
+                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
+
     case 6:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
         opcaoremocao = int(input("Como deseja procurar seu livro para remove-lo? "))    # usuário
@@ -53,36 +61,45 @@ match opcao:
                 with open("livros.json", "r", encoding="utf-8") as arquivo:
                     livros = json.load(arquivo)
 
+                encontrado = False
+
                 for livro in livros:
                     if livro["Titulo"] == titleremove:
                         livros.remove(livro)
-                        print("Livro removido com sucesso!")
+                        encontrado = True
                         break
-                    else:
-                        print("Este titulo não está na biblioteca.")
-                        break
-                
 
-                with open("livros.json", "w", encoding="utf-8") as arquivo:
-                    json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+                if encontrado == True:
+                    with open("livros.json", "w", encoding="utf-8") as arquivo:
+                        json.dump(livros, arquivo, indent=4, ensure_ascii=False)
 
+                    print("Livro removido com sucesso!")
+                else:
+                    print("Este título não está na biblioteca.")
             case 2:
                 isbnremove = input("Insira o ISBN do livro: ")
 
                 with open("livros.json", "r", encoding="utf-8") as arquivo:
                     livros = json.load(arquivo)
-
+                
+                encontrado = False
+                
                 for livro in livros:
                     if livro["ISBN"] == isbnremove:
                         livros.remove(livro)
-                        print("Livro removido com sucesso!")
+                        encontrado = True
                         break
-                    else:
-                        print("Este ISBN não está na biblioteca.")
-                        break
+
+                if encontrado == True:
+                    with open("livros.json", "w", encoding="utf-8") as arquivo:
+                        json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+                
+                    print("Livro removido com sucesso!")
+                else:
+                    print("Este título não está na biblioteca.")
+                
+                   
+
+
+
                     
-
-                with open("livros.json", "w", encoding="utf-8") as arquivo:
-                    json.dump(livros, arquivo, indent=4, ensure_ascii=False)
-
-
