@@ -46,9 +46,63 @@ match opcao:
             with open("livros.json","r",encoding="utf-8") as arquivo:   
                 livros = json.load(arquivo)
 
-            print("===============================\nOs livros cadastrados são:")
+            print("===============================\nOs livros cadastrados são:\n")
             for livro in livros:
                 print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
+
+    case 3:
+        print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
+        opcaoprocura = int(input("Como deseja procurar seu livro? "))
+
+        match opcaoprocura:
+            case 1:     
+                titlesearch = input("Insira o titulo do livro: ")
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                encontrado = False 
+
+                for livro in livros:
+                    if livro["Titulo"] == titlesearch:                
+                        print("===============================\n")        
+                        print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
+                        print("Gênero: " + livro['Gênero'] + "\n" + "Número de páginas: " + str(livro['Numero de páginas']))
+                        print("ISBN: " + livro['ISBN'])
+                        encontrado = True
+                        break
+                
+                if encontrado == True:
+                    with open("livros.json", "w", encoding="utf-8") as arquivo:
+                        json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+                
+                    print("\nLivro achado com sucesso!")
+                else:
+                    print("\nEste título não está na biblioteca.")
+            case 2:     
+                isbnsearch = input("Insira o ISBN do livro: ")
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                encontrado = False 
+
+                for livro in livros:
+                    if livro["ISBN"] == isbnsearch:                
+                        print("===============================\n")        
+                        print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
+                        print("Gênero: " + livro['Gênero'] + "\n" + "Número de páginas: " + str(livro['Numero de páginas']))
+                        print("ISBN: " + livro['ISBN'])
+                        encontrado = True
+                        break
+                
+                if encontrado == True:
+                    with open("livros.json", "w", encoding="utf-8") as arquivo:
+                        json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+                
+                    print("\nLivro achado com sucesso!")
+                else:
+                    print("\nEste título não está na biblioteca.")                
 
     case 6:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
@@ -94,9 +148,9 @@ match opcao:
                     with open("livros.json", "w", encoding="utf-8") as arquivo:
                         json.dump(livros, arquivo, indent=4, ensure_ascii=False)
                 
-                    print("Livro removido com sucesso!")
+                    print("\nLivro removido com sucesso!")
                 else:
-                    print("Este título não está na biblioteca.")
+                    print("\nEste título não está na biblioteca.")
                 
                    
 
