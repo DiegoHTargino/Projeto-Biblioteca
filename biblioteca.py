@@ -17,6 +17,7 @@ match opcao:
         numeropaginas = int(input("Numero de páginas: "))
         anopublicacao = int(input("Ano de publicação: "))
         isbnlivro = input("ISBN: ")
+        statuslivro = input("Status: ")
 
         novo_livro = {
             "Titulo": titulolivro,           # dicionário python dos livros
@@ -24,7 +25,8 @@ match opcao:
             "Gênero": generolivro,
             "Numero de páginas": numeropaginas,
             "Ano de publicação": anopublicacao,
-            "ISBN": isbnlivro
+            "ISBN": isbnlivro,
+            "Status": statuslivro
         }
 
         try:
@@ -69,6 +71,7 @@ match opcao:
                         print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
                         print("Gênero: " + livro['Gênero'] + "\n" + "Número de páginas: " + str(livro['Numero de páginas']))
                         print("ISBN: " + livro['ISBN'])
+                        print("Status: " + livro['Status']) 
                         encontrado = True
                         break
                 
@@ -102,8 +105,63 @@ match opcao:
                 
                     print("\nLivro achado com sucesso!")
                 else:
-                    print("\nEste título não está na biblioteca.")                
+                    print("\nEste título não está na biblioteca.")      
+    case 4:
+        print("===============================\n1- Titulo\n2- ISBN")
+        opcaoaluguel = int(input("Digite como quer alugar seu livro: "))
 
+        match opcaoaluguel:
+            case 1: 
+                opcaoaluguelT = input("Digite o titulo do livro: ")
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                encontrado = False
+
+                for livro in livros:
+                    if livro['Titulo'] == opcaoaluguelT:
+                        encontrado = True
+                        if livro['Status'] == "Disponível":
+                            livro['Status'] = "Alugado"
+
+                            with open("livros.json", "w", encoding="utf-8") as arquivo:
+                                json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+
+                                print("Livro alugado com sucesso!")
+                        else:
+                            print("Este livro já está alugado.")
+
+                        break
+
+                if encontrado == False:
+                    print("Este livro não foi encontrado.")
+            case 2:
+                opcaoaluguelISBN = input("Digite o ISBN do livro: ")
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                encontrado = False
+
+                for livro in livros:
+                    if livro['ISBN'] == opcaoaluguelISBN:
+                        encontrado = True
+                        if livro['Status'] == "Disponível":
+                            livro['Status'] = "Alugado"
+
+                            with open("livros.json", "w", encoding="utf-8") as arquivo:
+                                json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+
+                                print("Livro alugado com sucesso!")
+                        else:
+                            print("Este livro já está alugado.")
+
+                        break
+
+                if encontrado == False:
+                    print("Este livro não foi encontrado.")
+                    
     case 6:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
         opcaoremocao = int(input("Como deseja procurar seu livro para remove-lo? "))    # usuário
