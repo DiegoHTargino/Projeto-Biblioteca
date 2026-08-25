@@ -50,7 +50,7 @@ match opcao:
 
             print("===============================\nOs livros cadastrados são:\n")
             for livro in livros:
-                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
+                print('- ' + livro['Titulo'] + ' - (' + livro['Status'] + ').')   
 
     case 3:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
@@ -161,7 +161,62 @@ match opcao:
 
                 if encontrado == False:
                     print("Este livro não foi encontrado.")
-                    
+
+    case 5:
+        print("===============================\n1- Titulo\n2- ISBN")
+        opcaodevolucao = int(input("Como deseja procurar seu livro para devolve-lo? "))
+
+        match opcaodevolucao:
+            case 1: 
+                opcaodevolucaotitulo = input("Digite o titulo do livro: ")
+        
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+        
+                encontrado = False
+        
+                for livro in livros:
+                    if livro['Titulo'] == opcaodevolucaotitulo:
+                        encontrado = True
+                        if livro['Status'] == "Alugado":
+                            livro['Status'] = "Disponível"
+        
+                            with open("livros.json", "w", encoding="utf-8") as arquivo:
+                                json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+        
+                            print("\nLivro devolvido com sucesso!")
+                        else:
+                            print("\nEste livro já foi devolvido.")
+        
+                            break
+        
+                        if encontrado == False:
+                            print("Este livro não foi encontrado.")
+            case 2:
+                opcaodevolucaoisbn = input("Digite o ISBN do livro: ")
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                encontrado = False
+        
+                for livro in livros:
+                    if livro['ISBN'] == opcaodevolucaoisbn:
+                        encontrado = True
+                        if livro['Status'] == "Alugado":
+                            livro['Status'] = "Disponível"
+        
+                            with open("livros.json", "w", encoding="utf-8") as arquivo:
+                                json.dump(livros, arquivo, indent=4, ensure_ascii=False)
+        
+                            print("\nLivro devolvido com sucesso!")
+                        else:
+                            print("\nEste livro já foi devolvido.")
+        
+                            break
+        
+                        if encontrado == False:
+                            print("Este livro não foi encontrado.")
     case 6:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
         opcaoremocao = int(input("Como deseja procurar seu livro para remove-lo? "))    # usuário
@@ -209,9 +264,3 @@ match opcao:
                     print("\nLivro removido com sucesso!")
                 else:
                     print("\nEste título não está na biblioteca.")
-                
-                   
-
-
-
-                    
