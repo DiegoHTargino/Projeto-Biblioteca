@@ -1,26 +1,38 @@
 [
     {
-        "Titulo": "Memórias Póstumas de Brás Cubas",
-        "Autor": "Machado de Assis",
-        "Gênero": "Romance",
-        "Numero de páginas": 368,
-        "Ano de publicação": 1881,
-        "ISBN": "9788535910663"
-    },
-    {
-        "Titulo": "A Menina que Roubava Livros",
-        "Autor": "Markus Zusak",
-        "Gênero": "Drama",
-        "Numero de páginas": 480,
-        "Ano de publicação": 2005,
-        "ISBN": "9788598078175"
-    },
-    {
-        "Titulo": "O Nome do Vento",
-        "Autor": "Patrick Rothfuss",
+        "Titulo": "O Hobbit",
+        "Autor": "J.R.R. Tolkien",
         "Gênero": "Fantasia",
-        "Numero de páginas": 656,
-        "Ano de publicação": 2007,
-        "ISBN": "9788563657401"
+        "Numero de páginas": 336,
+        "Ano de publicação": 1937,
+        "ISBN": "111001",
+        "Status": "Disponível"
+    },
+    {
+        "Titulo": "Percy Jackson e o Ladrão de Raios",
+        "Autor": "Rick Riordan",
+        "Gênero": "Fantasia",
+        "Numero de páginas": 400,
+        "Ano de publicação": 2005,
+        "ISBN": "111007",
+        "Status": "Disponível"
+    },
+    {
+        "Titulo": "O Pequeno Príncipe",
+        "Autor": "Antoine de Saint-Exupéry",
+        "Gênero": "Fantasia",
+        "Numero de páginas": 96,
+        "Ano de publicação": 1943,
+        "ISBN": "111008",
+        "Status": "Disponível"
+    },
+    {
+        "Titulo": "Jogos Vorazes",
+        "Autor": "Suzanne Collins",
+        "Gênero": "Ficção",
+        "Numero de páginas": 400,
+        "Ano de publicação": 2008,
+        "ISBN": "111011",
+        "Status": "Alugado"
     }
 ]
