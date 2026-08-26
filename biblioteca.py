@@ -50,7 +50,7 @@ match opcao:
 
             print("===============================\nOs livros cadastrados são:\n")
             for livro in livros:
-                print('- ' + livro['Titulo'] + ' - (' + livro['Status'] + ').')   
+                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
 
     case 3:
         print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
@@ -264,3 +264,49 @@ match opcao:
                     print("\nLivro removido com sucesso!")
                 else:
                     print("\nEste título não está na biblioteca.")
+
+    case 7:
+        print("===============================\n~ ESTATÍSTICAS ~ \n===============================")
+        print("\n1- Livros cadastrados\n2- Livros disponíveis\n3- Livros alugados\n")
+
+        opcaoestatistica = int(input("Escolha uma opção: "))
+
+        match opcaoestatistica:
+            case 1:
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                print("===============================\n~ LIVROS TOTAIS CADASTRADOS ~ \n===============================")
+
+                print("Livros totais: ", len(livros))
+
+            case 2:
+                
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                    print("===============================\n~ LIVROS DISPONÍVEIS ~ \n===============================")
+
+                    disponivel = 0
+
+                    for livro in livros:
+                        if livro['Status'] == "Disponível":
+                            print("- " + livro['Titulo'])
+                            disponivel += 1
+
+                    print("\nLIVROS DISPONÍVEIS: ", disponivel)
+            case 3: 
+
+                with open("livros.json", "r", encoding="utf-8") as arquivo:
+                    livros = json.load(arquivo)
+
+                    print("===============================\n~ LIVROS ALUGADOS ~ \n===============================")
+
+                    alugado = 0
+
+                    for livro in livros:
+                        if livro['Status'] == "Alugado":
+                            print("- " + livro['Titulo'])
+                            alugado += 1
+                    print("\nLIVROS ALUGADOS: ", alugado)
+            
