@@ -1,15 +1,16 @@
 import json
 
 
-print("===============================\nBEM VINDO À BIBLIOTECA: \n===============================")
+print("===============================\n~ BEM  VINDO À BIBLIOTECA ~ \n===============================")
 
-print("1- Adicionar livro\n2 - Listar livros\n3 - Buscar livro\n4 - Emprestar livro\n5 - Devolver livro\n6 - Remover livro\n7 - Estatísticas\n0 - Sair")  # Menu para o usuário escolher opções
+print("1 - Adicionar livro\n2 - Listar livros\n3 - Buscar livro\n4 - Emprestar livro\n5 - Devolver livro\n6 - Remover livro\n7 - Estatísticas\n0 - Sair")  # Menu para o usuário escolher opções
 
 opcao = int(input("Escolha uma opção: "))
 
 match opcao: 
     case 1:
-        print("===============================\nInforme os dados do livro.\n") 
+        print("\n===============================\n~ CADASTRO DE LIVROS ~ \n===============================")
+        print("Informe os dados do livro.\n") 
 
         titulolivro = input("Titulo: ")           #cadastro do livro
         autorlivro = input("Autor: ")
@@ -42,19 +43,24 @@ match opcao:
         with open("livros.json", "w", encoding="utf-8") as arquivo:
             json.dump(livros, arquivo, indent=4, ensure_ascii=False)
             
-        print("Livro cadastrado com sucesso!\n===============================")
+        print("\nLivro cadastrado com sucesso!\n===============================")
 
     case 2:
+            print("\n===============================\n~ LISTA DE LIVROS ~ \n===============================")
+
             with open("livros.json","r",encoding="utf-8") as arquivo:   
                 livros = json.load(arquivo)
 
-            print("===============================\nOs livros cadastrados são:\n")
+            print("Os livros cadastrados são:\n")
             for livro in livros:
-                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').')   
+                print('- ' + livro['Titulo'] + ' - (' + livro['Autor'] + ').') 
+            print("===============================")
+                  
 
     case 3:
-        print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
-        opcaoprocura = int(input("Como deseja procurar seu livro? "))
+        print("\n===============================\n~ BUSCA DE LIVROS ~ \n===============================")
+        print("\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
+        opcaoprocura = int(input("\nComo deseja procurar seu livro? "))
 
         match opcaoprocura:
             case 1:     
@@ -67,7 +73,8 @@ match opcao:
 
                 for livro in livros:
                     if livro["Titulo"] == titlesearch:                
-                        print("===============================\n")        
+                        print("===============================\n") 
+                        print("===============================\n~ INFORMAÇÕES DO LIVRO ~ \n===============================")   
                         print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
                         print("Gênero: " + livro['Gênero'] + "\n" + "Número de páginas: " + str(livro['Numero de páginas']))
                         print("ISBN: " + livro['ISBN'])
@@ -79,9 +86,9 @@ match opcao:
                     with open("livros.json", "w", encoding="utf-8") as arquivo:
                         json.dump(livros, arquivo, indent=4, ensure_ascii=False)
                 
-                    print("\nLivro achado com sucesso!")
+                    print("\nLivro achado com sucesso!\n===============================")
                 else:
-                    print("\nEste título não está na biblioteca.")
+                    print("\nEste título não está na biblioteca.\n===============================")
             case 2:     
                 isbnsearch = input("Insira o ISBN do livro: ")
 
@@ -103,11 +110,15 @@ match opcao:
                     with open("livros.json", "w", encoding="utf-8") as arquivo:
                         json.dump(livros, arquivo, indent=4, ensure_ascii=False)
                 
-                    print("\nLivro achado com sucesso!")
+                    print("\nLivro achado com sucesso!\n===============================")
                 else:
-                    print("\nEste título não está na biblioteca.")      
+                    print("\nEste título não está na biblioteca.\n===============================")   
+
+            case _:
+                    print("\nOpção inválida.")   
     case 4:
-        print("===============================\n1- Titulo\n2- ISBN")
+        print("\n===============================\n~ EMPRÉSTIMO DE LIVROS ~ \n===============================\n")
+        print("1- Titulo\n2- ISBN\n")
         opcaoaluguel = int(input("Digite como quer alugar seu livro: "))
 
         match opcaoaluguel:
@@ -128,14 +139,14 @@ match opcao:
                             with open("livros.json", "w", encoding="utf-8") as arquivo:
                                 json.dump(livros, arquivo, indent=4, ensure_ascii=False)
 
-                                print("Livro alugado com sucesso!")
+                                print("\nLivro alugado com sucesso!\n===============================")
                         else:
-                            print("Este livro já está alugado.")
+                            print("\nEste livro já está alugado.\n===============================")
 
                         break
 
                 if encontrado == False:
-                    print("Este livro não foi encontrado.")
+                    print("Este livro não foi encontrado.\n===============================")
             case 2:
                 opcaoaluguelISBN = input("Digite o ISBN do livro: ")
 
@@ -153,17 +164,20 @@ match opcao:
                             with open("livros.json", "w", encoding="utf-8") as arquivo:
                                 json.dump(livros, arquivo, indent=4, ensure_ascii=False)
 
-                                print("Livro alugado com sucesso!")
+                                print("\nLivro alugado com sucesso!\n===============================")
                         else:
-                            print("Este livro já está alugado.")
+                            print("\nEste livro já está alugado.\n===============================")
 
                         break
 
                 if encontrado == False:
-                    print("Este livro não foi encontrado.")
+                    print("\nEste livro não foi encontrado.\n===============================")
+            case _:
+                print("\nOpção inválida.")
 
     case 5:
-        print("===============================\n1- Titulo\n2- ISBN")
+        print("\n===============================\n~ DEVOLUÇÃO DE LIVROS ~ \n===============================\n")
+        print("1- Titulo\n2- ISBN\n")
         opcaodevolucao = int(input("Como deseja procurar seu livro para devolve-lo? "))
 
         match opcaodevolucao:
@@ -184,9 +198,9 @@ match opcao:
                             with open("livros.json", "w", encoding="utf-8") as arquivo:
                                 json.dump(livros, arquivo, indent=4, ensure_ascii=False)
         
-                            print("\nLivro devolvido com sucesso!")
+                            print("\nLivro devolvido com sucesso!\n===============================")
                         else:
-                            print("\nEste livro já foi devolvido.")
+                            print("\nEste livro já foi devolvido.\n===============================")
         
                             break
         
@@ -209,17 +223,21 @@ match opcao:
                             with open("livros.json", "w", encoding="utf-8") as arquivo:
                                 json.dump(livros, arquivo, indent=4, ensure_ascii=False)
         
-                            print("\nLivro devolvido com sucesso!")
+                            print("\nLivro devolvido com sucesso!\n===============================")
                         else:
-                            print("\nEste livro já foi devolvido.")
+                            print("\nEste livro já foi devolvido.\n===============================")
         
                             break
         
                         if encontrado == False:
-                            print("Este livro não foi encontrado.")
+                            print("\nEste livro não foi encontrado.\n===============================")
+
+            case _:
+                print("\nOpção inválida.")
     case 6:
-        print("===============================\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
-        opcaoremocao = int(input("Como deseja procurar seu livro para remove-lo? "))    # usuário
+        print("\n===============================\n~ REMOÇÃO DE LIVROS ~ \n===============================")
+        print("\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
+        opcaoremocao = int(input("\nComo deseja procurar seu livro para remove-lo? "))    # usuário
 
         match opcaoremocao:
             case 1:
@@ -240,9 +258,9 @@ match opcao:
                     with open("livros.json", "w", encoding="utf-8") as arquivo:
                         json.dump(livros, arquivo, indent=4, ensure_ascii=False)
 
-                    print("Livro removido com sucesso!")
+                    print("\nLivro removido com sucesso!\n===============================")
                 else:
-                    print("Este título não está na biblioteca.")
+                    print("\nEste título não está na biblioteca.\n===============================")
             case 2:
                 isbnremove = input("Insira o ISBN do livro: ")
 
@@ -261,9 +279,12 @@ match opcao:
                     with open("livros.json", "w", encoding="utf-8") as arquivo:
                         json.dump(livros, arquivo, indent=4, ensure_ascii=False)
                 
-                    print("\nLivro removido com sucesso!")
+                    print("\nLivro removido com sucesso!\n===============================")
                 else:
-                    print("\nEste título não está na biblioteca.")
+                    print("\nEste título não está na biblioteca.\n===============================")
+
+            case _:
+                print("\nOpção inválida.")
 
     case 7:
         print("===============================\n~ ESTATÍSTICAS ~ \n===============================")
@@ -276,16 +297,17 @@ match opcao:
                 with open("livros.json", "r", encoding="utf-8") as arquivo:
                     livros = json.load(arquivo)
 
-                print("===============================\n~ LIVROS TOTAIS CADASTRADOS ~ \n===============================")
+                print("zn===============================\n~ LIVROS TOTAIS CADASTRADOS ~ \n===============================")
 
                 print("Livros totais: ", len(livros))
+        
 
             case 2:
                 
                 with open("livros.json", "r", encoding="utf-8") as arquivo:
                     livros = json.load(arquivo)
 
-                    print("===============================\n~ LIVROS DISPONÍVEIS ~ \n===============================")
+                    print("\n===============================\n~ LIVROS DISPONÍVEIS ~ \n===============================")
 
                     disponivel = 0
 
@@ -295,12 +317,13 @@ match opcao:
                             disponivel += 1
 
                     print("\nLIVROS DISPONÍVEIS: ", disponivel)
+                    print("===============================")
             case 3: 
 
                 with open("livros.json", "r", encoding="utf-8") as arquivo:
                     livros = json.load(arquivo)
 
-                    print("===============================\n~ LIVROS ALUGADOS ~ \n===============================")
+                    print("\n===============================\n~ LIVROS ALUGADOS ~ \n===============================")
 
                     alugado = 0
 
@@ -309,4 +332,8 @@ match opcao:
                             print("- " + livro['Titulo'])
                             alugado += 1
                     print("\nLIVROS ALUGADOS: ", alugado)
-            
+                    print("===============================")
+            case _:
+                print("\nOpção inválida.")
+    case _:
+        print("\nOpção inválida.")
