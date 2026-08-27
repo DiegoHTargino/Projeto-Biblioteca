@@ -4,10 +4,13 @@ import os
 def pausar():
     input("\nPressione ENTER para voltar...")
 
-os.system("cls")
+def limpar_tela():
+    os.system("cls")
+
+limpar_tela()
 
 while(True):
-    os.system("cls")
+    limpar_tela()
     print("===============================\n~ BEM  VINDO À BIBLIOTECA ~ \n===============================")
 
     print("1 - Adicionar livro\n2 - Listar livros\n3 - Buscar livro\n4 - Emprestar livro\n5 - Devolver livro\n6 - Remover livro\n7 - Estatísticas\n0 - Sair")  # Menu para o usuário escolher opções
@@ -17,7 +20,7 @@ while(True):
 
     match opcao: 
         case 1:
-            os.system("cls")
+            limpar_tela()
             print("\n===============================\n~ CADASTRO DE LIVROS ~ \n===============================")
             print("Informe os dados do livro.\n") 
 
@@ -58,7 +61,7 @@ while(True):
             
                        
         case 2:
-                os.system("cls")
+                limpar_tela()
                 print("\n===============================\n~ LISTA DE LIVROS ~ \n===============================")
 
                 with open("livros.json","r",encoding="utf-8") as arquivo:   
@@ -73,14 +76,14 @@ while(True):
                 pausar()
 
         case 3:
-            os.system("cls")
+            limpar_tela()
             print("\n===============================\n~ BUSCA DE LIVROS ~ \n===============================")
             print("\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
             opcaoprocura = int(input("\nComo deseja procurar seu livro? "))
 
             match opcaoprocura:
                 case 1:     
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ BUSCA POR TITULO ~\n===============================")
                     
                     titlesearch = input("Insira o titulo do livro: ")
@@ -91,7 +94,7 @@ while(True):
                     encontrado = False 
 
                     for livro in livros:
-                        if livro["Titulo"] == titlesearch:                
+                        if titlesearch.casefold() in livro["Titulo"].casefold():
                             print("===============================\n") 
                             print("===============================\n~ INFORMAÇÕES DO LIVRO ~ \n===============================")   
                             print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
@@ -111,7 +114,7 @@ while(True):
 
                     pausar()
                 case 2:     
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ BUSCA POR ISBN ~\n===============================")
 
                     isbnsearch = input("Insira o ISBN do livro: ")
@@ -122,7 +125,7 @@ while(True):
                     encontrado = False 
 
                     for livro in livros:
-                        if livro["ISBN"] == isbnsearch:  
+                        if isbnsearch.casefold() in livro["ISBN"].casefold():
                             print("===============================\n")      
                             print("===============================\n~ INFORMAÇÕES DO LIVRO ~ \n===============================")                   
                             print("Nome: " + livro['Titulo'] + "\n"  + "Autor:" + livro['Autor'])
@@ -145,14 +148,14 @@ while(True):
                     print("\nOpção inválida.")   
                     pausar()
         case 4:
-            os.system("cls")
+            limpar_tela()
             print("===============================\n~ EMPRÉSTIMO DE LIVROS ~ \n===============================\n")
             print("1- Titulo\n2- ISBN\n")
             opcaoaluguel = int(input("Digite como quer alugar seu livro: "))
 
             match opcaoaluguel:
                 case 1: 
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ EMPRÉSTIMO POR TITULO~\n===============================")
                     opcaoaluguelT = input("Digite o titulo do livro: ")
 
@@ -183,7 +186,7 @@ while(True):
                         print("\nEste livro não foi encontrado.\n===============================")
                         pausar()
                 case 2:
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ EMPRÉSTIMO POR ISBN~\n===============================")
                     opcaoaluguelISBN = input("Digite o ISBN do livro: ")
 
@@ -216,14 +219,14 @@ while(True):
                     pausar()
 
         case 5:
-            os.system("cls")
+            limpar_tela()
             print("\n===============================\n~ DEVOLUÇÃO DE LIVROS ~ \n===============================\n")
             print("1- Titulo\n2- ISBN\n")
             opcaodevolucao = int(input("Como deseja procurar seu livro para devolve-lo? "))
 
             match opcaodevolucao:
                 case 1: 
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ DEVOLUÇÃO POR TITULO ~\n===============================")
                     opcaodevolucaotitulo = input("Digite o titulo do livro: ")
             
@@ -252,7 +255,7 @@ while(True):
                         print("Este livro não foi encontrado.")
                         pausar()
                 case 2:
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ DEVOLUÇÃO POR ISBN ~\n===============================")
                     opcaodevolucaoisbn = input("Digite o ISBN do livro: ")
 
@@ -285,14 +288,14 @@ while(True):
                     print("\nOpção inválida.")
                     pausar() 
         case 6:
-            os.system("cls")
+            limpar_tela()
             print("\n===============================\n~ REMOÇÃO DE LIVROS ~ \n===============================")
             print("\n1- Titulo\n2- ISBN")   # adiciona a opção de procura para o
             opcaoremocao = int(input("\nComo deseja procurar seu livro para remove-lo? "))    # usuário
 
             match opcaoremocao:
                 case 1:
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ REMOÇÃO POR TITULO ~\n===============================")
                     titleremove = input("Insira o titulo do livro: ")         # podendo escolher entre remover po
                                                                             # titulo ou ISBN
@@ -320,7 +323,7 @@ while(True):
 
                     
                 case 2:
-                    os.system("cls")
+                    limpar_tela()
                     print("\n===============================\n~ REMOÇÃO POR ISBN ~\n===============================")
                     
                     isbnremove = input("Insira o ISBN do livro: ")
@@ -351,7 +354,7 @@ while(True):
                     pausar() 
 
         case 7:
-            os.system("cls")
+            limpar_tela()
             print("===============================\n~ ESTATÍSTICAS ~ \n===============================")
             print("\n1- Livros cadastrados\n2- Livros disponíveis\n3- Livros alugados\n")
 
@@ -359,7 +362,7 @@ while(True):
 
             match opcaoestatistica:
                 case 1:
-                    os.system("cls")
+                    limpar_tela()
                     with open("livros.json", "r", encoding="utf-8") as arquivo:
                         livros = json.load(arquivo)
 
@@ -372,7 +375,7 @@ while(True):
             
 
                 case 2:
-                    os.system("cls")
+                    limpar_tela()
                     with open("livros.json", "r", encoding="utf-8") as arquivo:
                         livros = json.load(arquivo)
 
@@ -390,7 +393,7 @@ while(True):
 
                         pausar()
                 case 3: 
-                    os.system("cls")
+                    limpar_tela()
                     with open("livros.json", "r", encoding="utf-8") as arquivo:
                         livros = json.load(arquivo)
 
