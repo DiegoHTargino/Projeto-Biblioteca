@@ -5,7 +5,7 @@ def pausar():
     input("\nPressione ENTER para voltar...")
 
 def limpar_tela():
-    os.system("cls")
+    os.system("cls" if os.name == "nt" else "clear")
 
 limpar_tela()
 
