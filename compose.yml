@@ -1,0 +1,8 @@
+services:
+  biblioteca:
+    build: .
+    container_name: biblioteca
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./livros.json:/app/livros.json
